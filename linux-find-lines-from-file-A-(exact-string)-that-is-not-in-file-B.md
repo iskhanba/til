@@ -1,6 +1,6 @@
 ## Find lines from file A (exact string) that is not in file B
 
-**Remove <CR>, if any**
+**Remove <CR>, if any, e.g. you copy paste from dos to unix**
 
 tr -d '\r' < file
 
@@ -17,6 +17,7 @@ comm -23 a_out.txt b_out.txt
 By default, comm outputs 3 columns: left-only, right-only, both. The -1, -2 and -3 switches suppress these columns.
 So, -23 hides the right-only and both columns, showing the lines that appear only in the first (left) file
 
+One line:  `comm -23 <( cat file1 | tr -d '[[:blank:]]' | sort -u )  <( cat file2 | tr -d '[[:blank:]]' | sort -u )`
 
 Reference
 * http://stackoverflow.com/questions/14473090/find-lines-from-a-file-which-are-not-present-in-another-file
